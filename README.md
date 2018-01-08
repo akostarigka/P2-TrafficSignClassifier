@@ -1,6 +1,8 @@
-## Traffic Sign Recognition
+# **Traffic Sign Recognition**
 
-**Build a Traffic Sign Recognition Project**
+---
+
+**Traffic Sign Recognition Project**
 
 The goals / steps of this project are the following:
 * Load the data set
@@ -10,6 +12,9 @@ The goals / steps of this project are the following:
 * Analyze the softmax probabilities of the new images
 * Summarize the results with a written report
 
+Project code can be found on the [link](https://github.com/akostarigka/P2-TrafficSignClassifier/blob/master/Traffic_Sign_Classifier.ipynb).
+
+---
 
 [//]: # (Image References)
 
@@ -38,10 +43,6 @@ The goals / steps of this project are the following:
 [image_pred_7]: ./writeup_figures/PredBumpyRoad.png "Predictions for Bumpy Road"
 [image_pred_8]: ./writeup_figures/PredRightOffWay.png "Predictions for Right Off Way"
 [image_pred_9]: ./writeup_figures/PredNoEntry.png "Predictions for No Entry"
-
-### Writeup / README
-
-You're reading it! and here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
 
 ### Data Set Summary & Exploration
 
@@ -94,7 +95,7 @@ Noticing the big difference in the amount of data in each unique label (Section 
 
 #### 2. Model architecture
 
-The model used is based on the well known LeNet architecture with the following adaptations: two extra convolutions were added and the final fully connected layer was dropped . The layers used along with their respective dimensions are described in the following table:
+The model used is based on the well known LeNet architecture, which is an excellent "first architecture" for Convolutional Neural Networks (especially for image recognition) due to its compactness and simplicity. However the training accuracy was below the project standards. In order to increase the performance, the model was enhanced with 2 extra convolution layers (5x5) after the already existing ones. In order to avoid overfitting the last fully connected layer was dropped. All the other layers and activation functions were kept the same. The layers used along with their respective dimensions are described in the following table:
 
 | Layer         		|     Description	        					|
 |:---------------------:|:---------------------------------------------:|
@@ -111,19 +112,15 @@ The model used is based on the well known LeNet architecture with the following 
 | Fully connected		| Output 64    									|
 | Activation 			|                              RELU											  									                                   |
 | Fully connected	    |  Output43  |
-| Softmax		  |   |
-
 
 #### 3. Model training
 
-To train the model, I used a learning rate of 0.00075 and a batch size of 256. The model was trained for 50 epochs. Type of optimizer (???)
+To train the model, I used a learning rate of 0.00075 and a batch size of 256. The model was trained for 50 epochs. I finally used the Adam optimizer, which is an extension to the stochastic gradient descent algorithm but also computationally efficient and relatively easy to configure.
 
 The final training results were:
 * training accuracy: 0.991
 * validation accuracy: 0.971
 * test accuracy: 0.947
-
-Initially the LeNet architecture was chosen, which is an excellent "first architecture" for Convolutional Neural Networks (especially for image recognition) due to its compactness and simplicity. However the accuracy was below the project standards. In order to increase the accuracy the model was enhanced with 2 extra convolution layers (5x5) after the already existing ones. In order to avoid overfitting the last fully connected layer was dropped. All the other layers and activation functions were kept the same.
 
 The training results provide good evidence that the model worked well. Further evidence on the effectiveness of the model can be seen in the next session, where the model is confronted with new traffic sign images found on the web.
 
@@ -265,3 +262,7 @@ The top five soft max probabilities for each figure are:
 | 0.000	        | No passing|
 
 ![alt text][image_pred_9]
+
+### Conclusion
+
+In this project we have trained a Traffic Sign Classifier using convolutional neural networks (CNNs). The model was trained using the dataset from the [German Traffic Sign Recognition Benchmark (GTSRB)](http://benchmark.ini.rub.de/?section=gtsrb&subsection=dataset), subjected to various preprocessing techniques (conversion to grayscale, data normalization and augmentation). The basis for the CNN architecture was the well known LeNet, specially adapted to fulfill the project's needs. Testing of the proposed model on random German Traffic Signs found on the web illustrates the effectiveness of the approach.   
